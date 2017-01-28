@@ -13,21 +13,15 @@ pub struct Set {
 /// [commit](https://github.com/rust-lang/rust/pull/35091).
 impl Set {
     pub fn new() -> Set {
-        Set {
-            data: HashSet::new()
-        }
+        Set { data: HashSet::new() }
     }
 
     pub fn with_capacity(size: usize) -> Set {
-        Set {
-            data: HashSet::with_capacity(size)
-        }
+        Set { data: HashSet::with_capacity(size) }
     }
 
     pub fn fill(data: HashSet<Vec<u8>>) -> Set {
-        Set {
-            data: data
-        }
+        Set { data: data }
     }
 
     /// Insert an element into the set.
@@ -59,7 +53,7 @@ impl Set {
     ///
     /// assert_eq!(Set { data: a.union(&b).cloned().collect() },
     ///            Set { data: vec![vec![1], vec![2], vec![3], vec![4]].into_iter().collect() });
-    pub fn union<'a>(&'a self, other: &'a Set) -> impl Iterator<Item=&'a Vec<u8>> {
+    pub fn union<'a>(&'a self, other: &'a Set) -> impl Iterator<Item = &'a Vec<u8>> {
         self.data.union(&other.data)
     }
 
@@ -75,7 +69,7 @@ impl Set {
     ///
     /// let result = Set { data: a.intersection(&b).cloned().collect() };
     /// assert_eq!(result, Set { data: vec![vec![2], vec![3]].into_iter().collect() });
-    pub fn intersection<'a>(&'a self, other: &'a Set) -> impl Iterator<Item=&'a Vec<u8>> {
+    pub fn intersection<'a>(&'a self, other: &'a Set) -> impl Iterator<Item = &'a Vec<u8>> {
         self.data.intersection(&other.data)
     }
 
@@ -94,7 +88,7 @@ impl Set {
     ///
     /// let result = Set { data: a.difference(&b).cloned().collect() };
     /// assert_eq!(result, Set { data: vec![vec![1]].into_iter().collect() });
-    pub fn difference<'a>(&'a self, other: &'a Set) -> impl Iterator<Item=&'a Vec<u8>> {
+    pub fn difference<'a>(&'a self, other: &'a Set) -> impl Iterator<Item = &'a Vec<u8>> {
         self.data.difference(&other.data)
     }
 
@@ -116,7 +110,7 @@ impl Set {
     /// assert_eq!(result_a, result_b);
     /// assert_eq!(result_a,
     ///            Set { data: vec![vec![1], vec![4]].into_iter().collect() });
-    pub fn symmetric_difference<'a>(&'a self, other: &'a Set) -> impl Iterator<Item=&'a Vec<u8>> {
+    pub fn symmetric_difference<'a>(&'a self, other: &'a Set) -> impl Iterator<Item = &'a Vec<u8>> {
         self.data.symmetric_difference(&other.data)
     }
 
